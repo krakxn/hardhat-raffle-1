@@ -10,7 +10,8 @@ const {developmentChains, networkConfig} = require("../helper-hardhat-config")
 
         beforeEach(async function() {
             const { deployer } = await getNamedAccounts()
-            await deployments.fixture(["all"])
+            await deployments.fixture(["mocks", "raffle"])
+            // await deployments.fixture(["all"])
             raffle = await ethers.getContract("Raffle", deployer)
             vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock", deployer)
         })
